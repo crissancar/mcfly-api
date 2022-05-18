@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+import { UserPutController } from './controllers/user-put.controller';
 
-@Module({})
+@Module({
+  controllers: [UserPutController],
+  providers: [],
+})
 export class UsersModule {}
