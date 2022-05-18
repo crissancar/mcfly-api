@@ -1,0 +1,40 @@
+version: '3.8'
+
+x-app-service: &default-app
+  build: .
+  command: ''
+  container_name: ''
+  depends_on:
+    - mongo
+  environment:
+    - MONGO_URL=mongodb://mongo:27017/mcfly-api-dev
+  networks:
+    - mcfly-network
+  volumes:
+    - .:/code
+    - node_modules:/code/node_modules
+
+services:
+  mcfly-backend:
+    <<: *default-app
+    container_name: 'app'
+    command: bash -c "npm run build && npm run start"
+    ports:
+      - '3000:3000'
+
+  mongo:
+    container_name: 'mongo'
+    image: mongo:3.6.0
+    networks:
+      - mcfly-network
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  node_modules:
+  mongo_data:
+
+networks:
+  mcfly-network:
