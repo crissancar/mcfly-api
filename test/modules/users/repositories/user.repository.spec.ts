@@ -1,7 +1,7 @@
-import { getConnectionToken, getModelToken, MongooseModule } from '@nestjs/mongoose';
+import { getModelToken } from '@nestjs/mongoose';
 import { NestApplication } from '@nestjs/core';
 import { UserRepository } from 'src/modules/users/repositories/user.repository';
-import { Connection, Model } from 'mongoose';
+import { Model } from 'mongoose';
 import { Users } from '../../../../src/modules/users/persistence/mongoose-user.model';
 import { AppModule } from '../../../../src/app/app.module';
 import { Test } from '@nestjs/testing';
