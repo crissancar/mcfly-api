@@ -13,12 +13,20 @@ Given('I send a PUT request to {string} with body:', (route: string, body: strin
   _request = request(application.getHttpServer()).put(route).send(JSON.parse(body));
 });
 
+Given('I send a GET request to {string}', (route: string) => {
+  _request = request(application.getHttpServer()).get(route);
+});
+
 Then('the response status code should be {int}', async (status: number) => {
   _response = await _request.expect(status);
 });
 
 Then('the response should be empty', () => {
   assert.deepStrictEqual(_response.body, {});
+});
+
+Then('the response content should be:', (response) => {
+  assert.deepEqual(_response.body, JSON.parse(response));
 });
 
 BeforeAll(async () => {

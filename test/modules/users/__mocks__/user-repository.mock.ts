@@ -1,11 +1,27 @@
 import { UserRepository } from '../../../../src/modules/users/repositories/user.repository';
 import { User } from '../../../../src/modules/users/models/user.model';
+import { Nullable } from '../../../../src/modules/shared/types/Nullable';
 
 export class UserRepositoryMock implements UserRepository {
   private mockSave = jest.fn();
+  private mockSearch = jest.fn();
+  private foundUser: Nullable<User> = null;
 
   async save(user: User): Promise<void> {
     this.mockSave(user);
+  }
+
+  async search(id: string): Promise<Nullable<User>> {
+    this.mockSearch();
+    return this.foundUser;
+  }
+
+  returnOnSearch(user: User) {
+    this.foundUser = user;
+  }
+
+  assertSearch() {
+    expect(this.mockSearch).toHaveBeenCalled();
   }
 
   assertLastSavedUserIs(expected: User): void {
