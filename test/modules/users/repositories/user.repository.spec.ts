@@ -1,7 +1,7 @@
-import { getModelToken } from '@nestjs/mongoose';
+import { getConnectionToken, getModelToken } from '@nestjs/mongoose';
 import { NestApplication } from '@nestjs/core';
 import { UserRepository } from 'src/modules/users/repositories/user.repository';
-import { Model } from 'mongoose';
+import { Connection, Model } from 'mongoose';
 import { Users } from '../../../../src/modules/users/persistence/mongoose-user.model';
 import { AppModule } from '../../../../src/app/app.module';
 import { Test } from '@nestjs/testing';
@@ -31,7 +31,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  // await (app.get(getConnectionToken()) as Connection).db.dropDatabase();
+  await (app.get(getConnectionToken()) as Connection).db.dropDatabase();
   await app.close();
 });
 
