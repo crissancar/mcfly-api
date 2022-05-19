@@ -17,6 +17,10 @@ export class User {
     return new User(id, username, email, this.hashPassword(password));
   }
 
+  static fromPlainData(plainData: { id: string; username: string; email: string; password: string }): User {
+    return new User(plainData.id, plainData.username, plainData.email, plainData.password);
+  }
+
   static hashPassword(password: string) {
     const saltOrRounds = 10;
 

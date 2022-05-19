@@ -5,11 +5,13 @@ import { UserCreator } from './services/user-creator.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongooseUserRepository } from './persistence/mongoose-user.repository';
 import { UserGetController } from './controllers/user-get.controller';
+import { UserFinder } from './services/user-finder.service';
 
 @Module({
   controllers: [UserPutController, UserGetController],
   providers: [
     UserCreator,
+    UserFinder,
     {
       provide: 'UserRepository',
       useClass: MongooseUserRepository,
