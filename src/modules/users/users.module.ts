@@ -4,9 +4,10 @@ import { Users, UserSchema } from './persistence/mongoose-user.model';
 import { UserCreator } from './services/user-creator.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongooseUserRepository } from './persistence/mongoose-user.repository';
+import { UserGetController } from './controllers/user-get.controller';
 
 @Module({
-  controllers: [UserPutController],
+  controllers: [UserPutController, UserGetController],
   providers: [
     UserCreator,
     {
