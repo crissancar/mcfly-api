@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { UserPutController } from './controllers/user-put.controller';
-import { InMemoryUserRepository } from './repositories/in-memory-user.repository';
+import { Users, UserSchema } from './persistence/mongoose-user.model';
 import { UserCreator } from './services/user-creator.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { MongooseUserRepository } from './persistence/mongoose-user.repository';
 
 @Module({
   controllers: [UserPutController],
@@ -9,8 +11,9 @@ import { UserCreator } from './services/user-creator.service';
     UserCreator,
     {
       provide: 'UserRepository',
-      useClass: InMemoryUserRepository,
+      useClass: MongooseUserRepository,
     },
   ],
+  imports: [MongooseModule.forFeature([{ name: Users.name, schema: UserSchema }])],
 })
 export class UsersModule {}
