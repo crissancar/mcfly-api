@@ -6,8 +6,6 @@ x-app-service: &default-app
   container_name: ''
   depends_on:
     - mongo
-  environment:
-    - MONGO_URL=mongodb://mongo:27017/mcfly-api-dev
   networks:
     - mcfly-network
   volumes:

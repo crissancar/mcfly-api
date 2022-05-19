@@ -14,11 +14,11 @@ build:
 
 # Run tests
 test: build
-	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run prebuild && npm run build && npm run test'
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm $(SERVICE_NAME) bash  -c 'npm run build && npm run test'
 
 # Start mcfly backend app
 start-mcfly-backend: build
-	docker-compose up $(MCFLY_APP_NAME)-backend && docker-compose down
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up $(MCFLY_APP_NAME)-backend && docker-compose down
 
 # Clean containers
 clean:

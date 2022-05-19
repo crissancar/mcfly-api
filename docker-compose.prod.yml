@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  mcfly-backend:
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/mcfly-api-prod
