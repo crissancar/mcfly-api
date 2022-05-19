@@ -43,4 +43,13 @@ describe('UserRepository', () => {
       await repository.save(user);
     });
   });
+
+  describe('#save', () => {
+    it('should find a user', async () => {
+      const user = UserMother.random();
+
+      await repository.save(user);
+      await repository.search(user.id);
+    });
+  });
 });
