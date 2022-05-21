@@ -3,5 +3,6 @@ import { Nullable } from '../../shared/types/Nullable';
 
 export interface UserRepository {
   save(user: User): Promise<void>;
-  search(id: string): Promise<Nullable<User>>;
+  findById(id: string): Promise<Nullable<User>>;
+  findByEmail(email: string): Promise<Nullable<User>>;
 }
