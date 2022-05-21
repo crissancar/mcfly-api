@@ -19,6 +19,12 @@ export class MongooseActivatedUsersRepository
     await this.persist(id, activatedUser);
   }
 
+  async delete(activatedUser: ActivatedUser): Promise<void> {
+    const id: string = activatedUser.id.valueOf();
+
+    await this.model().findByIdAndRemove(id);
+  }
+
   protected model(): Model<ActivatedUsers> {
     return this._model;
   }
