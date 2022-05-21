@@ -16,7 +16,7 @@ describe('UserFinder', () => {
     const user = UserMother.random();
     repository.returnOnSearch(user);
 
-    await repository.search(user.id);
+    await repository.findById(user.id);
     repository.assertSearch();
 
     const response = await finder.run(user.id);
