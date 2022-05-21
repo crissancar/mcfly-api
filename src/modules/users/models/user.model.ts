@@ -26,4 +26,8 @@ export class User {
 
     return bcrypt.hashSync(password, saltOrRounds);
   }
+
+  static comparePasswords(password: string, hashedPassword: string): boolean {
+    return bcrypt.compareSync(password, hashedPassword);
+  }
 }

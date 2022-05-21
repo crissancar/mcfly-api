@@ -17,10 +17,16 @@ export class MongooseUserRepository extends MongooseRepository<Users> implements
     await this.persist(id, user);
   }
 
-  async search(id: string): Promise<Nullable<User>> {
+  async findById(id: string): Promise<Nullable<User>> {
     const user: any = await this.model().findById(id);
 
     return user ? User.fromPlainData({ ...user._doc, id: id }) : null;
+  }
+
+  async findByEmail(email: string): Promise<Nullable<User>> {
+    const user: any = await this.model().findOne({ email: email });
+
+    return user ? User.fromPlainData({ ...user._doc, id: user._id }) : null;
   }
 
   protected model(): Model<Users> {
