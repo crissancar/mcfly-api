@@ -29,6 +29,6 @@ import { ActivatedUserFinder } from './services/activated-user-finder.service';
       useClass: MongooseActivatedUsersRepository,
     },
   ],
-  exports: [ActivatedUsersGetter],
+  exports: [ActivatedUserFinder],
 })
 export class ActivatedUsersModule {}
