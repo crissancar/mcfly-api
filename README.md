@@ -12,6 +12,18 @@ $ make start-mcfly-backend
 ```
 _Y listo💨_
 
+_En caso de no tener instalado el comando make, se puede instalar con:_
+```bash
+$ sudo apt-get update
+```
+```bash
+$ sudo apt-get install make
+```
+_o con:_
+```bash
+$ sudo apt-get install --reinstall make
+```
+
 ## Limpiar contenedores de Docker 🐳
 ```bash
 $ make clean
