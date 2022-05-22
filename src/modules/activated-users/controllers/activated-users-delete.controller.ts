@@ -11,7 +11,7 @@ import { UserDeactivator } from '../services/user-deactivator.service';
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('activated-users')
-export class DeactivateUserDeleteController {
+export class ActivatedUsersDeleteController {
   constructor(private deactivator: UserDeactivator) {}
 
   @Delete('deactivate/:id')
