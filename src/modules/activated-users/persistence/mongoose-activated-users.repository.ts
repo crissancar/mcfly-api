@@ -25,6 +25,12 @@ export class MongooseActivatedUsersRepository
     await this.model().findByIdAndRemove(id);
   }
 
+  async find(): Promise<any> {
+    const activatedUsers: any = await this.model().find();
+
+    return activatedUsers ? ActivatedUser.fromPlainDataArray(activatedUsers) : null;
+  }
+
   protected model(): Model<ActivatedUsers> {
     return this._model;
   }
