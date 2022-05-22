@@ -14,4 +14,15 @@ export class Message {
   static create(id: string, senderId: string, receiverId: string, content: string) {
     return new Message(id, senderId, receiverId, content);
   }
+
+  static fromPlainDataArray(plainDataArray): Array<Message> {
+    const userMessages = plainDataArray.map((item) => {
+      const id: string = item._id;
+      const { senderId, receiverId, content } = item;
+
+      return Message.create(id, senderId, receiverId, content);
+    });
+
+    return userMessages;
+  }
 }
