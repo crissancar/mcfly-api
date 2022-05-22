@@ -11,7 +11,7 @@ import { JwtValidator } from '../../shared/services/jwt-validator.service';
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('activated-users')
-export class ActivateUserPostController {
+export class ActivatedUsersPostController {
   constructor(private activator: UserActivator) {}
 
   @Post('activate/:id')
