@@ -1,5 +1,5 @@
 export class ActivatedUser {
-  readonly id;
+  readonly id: string;
 
   constructor(id) {
     this.id = id;
@@ -7,6 +7,10 @@ export class ActivatedUser {
 
   static create(id: string) {
     return new ActivatedUser(id);
+  }
+
+  static fromPlainData(plainData: { id: string }): ActivatedUser {
+    return new ActivatedUser(plainData.id);
   }
 
   static fromPlainDataArray(plainDataArray): Array<ActivatedUser> {

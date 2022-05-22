@@ -7,19 +7,28 @@ import { MongooseActivatedUsersRepository } from './persistence/mongoose-activat
 import { ActivatedUsersDeleteController } from './controllers/activated-users-delete.controller';
 import { UserDeactivator } from './services/user-deactivator.service';
 import { ActivatedUsersGetController } from './controllers/activated-users-get.controller';
-import { ActivatedUsersFinder } from './services/activated-users-finder.service';
+import { ActivatedUsersGetter } from './services/activated-users-getter.service';
+import { ActivatedUserGetController } from './controllers/activated-user-get.controller';
+import { ActivatedUserFinder } from './services/activated-user-finder.service';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: ActivatedUsers.name, schema: ActivatedUsersSchema }])],
-  controllers: [ActivatedUsersPostController, ActivatedUsersDeleteController, ActivatedUsersGetController],
+  controllers: [
+    ActivatedUsersPostController,
+    ActivatedUsersDeleteController,
+    ActivatedUsersGetController,
+    ActivatedUserGetController,
+  ],
   providers: [
     UserActivator,
     UserDeactivator,
-    ActivatedUsersFinder,
+    ActivatedUsersGetter,
+    ActivatedUserFinder,
     {
       provide: 'ActivatedUsersRepository',
       useClass: MongooseActivatedUsersRepository,
     },
   ],
+  exports: [ActivatedUserFinder],
 })
 export class ActivatedUsersModule {}
