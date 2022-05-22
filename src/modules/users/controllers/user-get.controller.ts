@@ -20,7 +20,7 @@ export class UserGetController {
     try {
       JwtValidator.verifyUserAuth(id, authUser);
 
-      const user = await this.finder.run(id);
+      const user = await this.finder.run({ id });
 
       res.status(HttpStatus.OK).send(user);
     } catch (error) {

@@ -17,7 +17,7 @@ export class Authenticator {
   async run(request: LoginUserRequest) {
     const { email, password } = request;
 
-    const user = await this.userFinder.run(email);
+    const user = await this.userFinder.run({ email });
 
     if (this.userAuthenticationFailed(password, user.password)) {
       throw new UnauthorizedException();

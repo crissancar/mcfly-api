@@ -19,7 +19,7 @@ describe('UserFinder', () => {
     await repository.findById(user.id);
     repository.assertSearch();
 
-    const response = await finder.run(user.id);
+    const response = await finder.run({ id: user.id });
 
     const expected = FindUserResponseMother.create(user);
     expect(expected).toEqual(response);
