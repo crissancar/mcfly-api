@@ -3,7 +3,7 @@ import { ActivatedUsersRepository } from '../repositories/activated-users.reposi
 import { NoActivatedUsers } from '../exceptions/no-activated-users.exception';
 import { FindActivatedUsersResponse } from '../dtos/find-activated-users-response.dto';
 
-export class ActivatedUsersFinder {
+export class ActivatedUsersGetter {
   constructor(@Inject('ActivatedUsersRepository') private repository: ActivatedUsersRepository) {}
 
   async run() {

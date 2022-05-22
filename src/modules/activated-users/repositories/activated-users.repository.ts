@@ -5,4 +5,5 @@ export interface ActivatedUsersRepository {
   save(activatedUser: ActivatedUser): Promise<void>;
   delete(activatedUser: ActivatedUser): Promise<void>;
   find(): Promise<Nullable<Array<ActivatedUser>>>;
+  findById(id: string): Promise<Nullable<ActivatedUser>>;
 }

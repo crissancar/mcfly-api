@@ -7,7 +7,7 @@ import { MongooseActivatedUsersRepository } from './persistence/mongoose-activat
 import { ActivatedUsersDeleteController } from './controllers/activated-users-delete.controller';
 import { UserDeactivator } from './services/user-deactivator.service';
 import { ActivatedUsersGetController } from './controllers/activated-users-get.controller';
-import { ActivatedUsersFinder } from './services/activated-users-finder.service';
+import { ActivatedUsersGetter } from './services/activated-users-getter.service';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: ActivatedUsers.name, schema: ActivatedUsersSchema }])],
@@ -15,11 +15,12 @@ import { ActivatedUsersFinder } from './services/activated-users-finder.service'
   providers: [
     UserActivator,
     UserDeactivator,
-    ActivatedUsersFinder,
+    ActivatedUsersGetter,
     {
       provide: 'ActivatedUsersRepository',
       useClass: MongooseActivatedUsersRepository,
     },
   ],
+  exports: [ActivatedUsersGetter],
 })
 export class ActivatedUsersModule {}
