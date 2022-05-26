@@ -15,14 +15,8 @@ export class ActivatedUsersGetController {
 
   @Get()
   async run(@AuthUser() authUser: AuthenticatedUser, @Res() res: Response) {
-    try {
-      const activatedUsers = await this.finder.run();
+    const activatedUsers = await this.finder.run();
 
-      res.status(HttpStatus.OK).send(activatedUsers);
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
-
-    res.status(HttpStatus.OK).send();
+    res.status(HttpStatus.OK).send(activatedUsers);
   }
 }

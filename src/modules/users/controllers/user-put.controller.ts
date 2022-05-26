@@ -24,13 +24,9 @@ export class UserPutController {
     @Body() req: CreateUserRequest,
     @Res() res: Response,
   ) {
-    try {
-      JwtValidator.verifyUserAuth(id, authUser);
+    JwtValidator.verifyUserAuth(id, authUser);
 
-      await this.creator.run({ id, ...req });
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    await this.creator.run({ id, ...req });
 
     res.status(HttpStatus.CREATED).send();
   }

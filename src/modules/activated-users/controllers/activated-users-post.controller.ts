@@ -16,13 +16,9 @@ export class ActivatedUsersPostController {
 
   @Post('activate/:id')
   async run(@AuthUser() authUser: AuthenticatedUser, @Param('id') id: string, @Res() res: Response) {
-    try {
-      JwtValidator.verifyUserAuth(id, authUser);
+    JwtValidator.verifyUserAuth(id, authUser);
 
-      await this.activator.run({ id });
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    await this.activator.run({ id });
 
     res.status(HttpStatus.OK).send();
   }

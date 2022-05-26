@@ -16,13 +16,9 @@ export class ActivatedUsersDeleteController {
 
   @Delete('deactivate/:id')
   async run(@AuthUser() authUser: AuthenticatedUser, @Param('id') id: string, @Res() res: Response) {
-    try {
-      JwtValidator.verifyUserAuth(id, authUser);
+    JwtValidator.verifyUserAuth(id, authUser);
 
-      await this.deactivator.run({ id });
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    await this.deactivator.run({ id });
 
     res.status(HttpStatus.OK).send();
   }

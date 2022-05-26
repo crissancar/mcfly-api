@@ -23,14 +23,10 @@ export class MessagePostController {
     @Body() req: SendMessageRequest,
     @Res() res: Response,
   ) {
-    try {
-      JwtValidator.verifyUserAuth(senderId, authUser);
+    JwtValidator.verifyUserAuth(senderId, authUser);
 
-      await this.sender.run({ senderId, receiverId, ...req });
+    await this.sender.run({ senderId, receiverId, ...req });
 
-      res.status(HttpStatus.OK).send();
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    res.status(HttpStatus.OK).send();
   }
 }
