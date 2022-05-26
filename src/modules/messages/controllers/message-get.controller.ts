@@ -16,14 +16,10 @@ export class MessageGetController {
 
   @Get(':id')
   async run(@AuthUser() authUser: AuthenticatedUser, @Param('id') id: string, @Res() res: Response) {
-    try {
-      JwtValidator.verifyUserAuth(id, authUser);
+    JwtValidator.verifyUserAuth(id, authUser);
 
-      const messages = await this.finder.run({ id });
+    const messages = await this.finder.run({ id });
 
-      res.status(HttpStatus.OK).send(messages);
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    res.status(HttpStatus.OK).send(messages);
   }
 }

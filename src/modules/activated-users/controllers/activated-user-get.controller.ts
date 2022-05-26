@@ -13,13 +13,7 @@ export class ActivatedUserGetController {
 
   @Get(':id')
   async run(@Param('id') id: string, @Res() res: Response) {
-    try {
-      await this.finder.run({ id });
-
-      res.status(HttpStatus.OK).send();
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    await this.finder.run({ id });
 
     res.status(HttpStatus.OK).send();
   }

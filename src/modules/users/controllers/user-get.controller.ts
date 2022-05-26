@@ -17,14 +17,10 @@ export class UserGetController {
   @Get(':id')
   @ApiOkResponse()
   async run(@AuthUser() authUser: AuthenticatedUser, @Param('id') id: string, @Res() res: Response) {
-    try {
-      JwtValidator.verifyUserAuth(id, authUser);
+    JwtValidator.verifyUserAuth(id, authUser);
 
-      const user = await this.finder.run({ id });
+    const user = await this.finder.run({ id });
 
-      res.status(HttpStatus.OK).send(user);
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    res.status(HttpStatus.OK).send(user);
   }
 }

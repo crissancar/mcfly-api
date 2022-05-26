@@ -11,11 +11,7 @@ export class AuthAccountPostController {
 
   @Post('account/:id')
   async run(@Param('id') id: string, @Body() req: CreateUserRequest, @Res() res: Response) {
-    try {
-      await this.creator.run({ id, ...req });
-    } catch (error) {
-      res.status(error.getStatus()).send();
-    }
+    await this.creator.run({ id, ...req });
 
     res.status(HttpStatus.CREATED).send();
   }
