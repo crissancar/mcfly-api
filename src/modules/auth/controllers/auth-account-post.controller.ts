@@ -1,8 +1,8 @@
 import { Body, Controller, HttpStatus, Param, Post, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { UserCreator } from '../../users/services/user-creator.service';
 import { CreateUserRequest } from '../../users/dtos/create-user-request.dto';
-import { UserCreator } from 'src/modules/users/services/user-creator.service';
 
 @ApiTags('Authentication')
 @Controller('auth')

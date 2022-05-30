@@ -4,9 +4,9 @@ import { MongooseConfigModule } from '../config/persistence/mongoose-config.modu
 import { AuthModule } from '../modules/auth/auth.module';
 import { ActivatedUsersModule } from '../modules/activated-users/activated-users.module';
 import { MessagesModule } from '../modules/messages/messages.module';
-import { NotificationsModule } from 'src/modules/notifications/notifications.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { UserIsActivatedMiddleware } from 'src/modules/activated-users/middlewares/user-is-activated.middleware';
+import { UserIsActivatedMiddleware } from '../modules/activated-users/middlewares/user-is-activated.middleware';
+import { NotificationsModule } from '../modules/notifications/notifications.module';
 
 @Module({
   imports: [

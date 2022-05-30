@@ -1,6 +1,6 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { MongooseRepository } from 'src/modules/shared/persistence/mongoose.repository';
+import { MongooseRepository } from '../../shared/persistence/mongoose.repository';
 import { NotificationRepository } from '../repositories/notification.repository';
 import { Notifications } from './mongose-notification.model';
 import { Notification } from '../models/notification.model';
