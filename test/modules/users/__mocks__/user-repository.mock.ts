@@ -3,9 +3,6 @@ import { User } from '../../../../src/modules/users/models/user.model';
 import { Nullable } from '../../../../src/modules/shared/types/Nullable';
 
 export class UserRepositoryMock implements UserRepository {
-  findByEmail(email: string): Promise<User> {
-    throw new Error('Method not implemented.');
-  }
   private mockSave = jest.fn();
   private mockSearch = jest.fn();
   private foundUser: Nullable<User> = null;
@@ -15,6 +12,11 @@ export class UserRepositoryMock implements UserRepository {
   }
 
   async findById(id: string): Promise<Nullable<User>> {
+    this.mockSearch();
+    return this.foundUser;
+  }
+
+  async findByEmail(email: string): Promise<Nullable<User>> {
     this.mockSearch();
     return this.foundUser;
   }
